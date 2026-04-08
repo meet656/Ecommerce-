@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LumaCart - Premium eCommerce</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="loadingSpinner" class="spinner-overlay hidden">
+      <div class="spinner"></div>
+    </div>
+    <div id="toastContainer" class="toast-container"></div>
+
+    <nav class="navbar glass">
+      <div class="logo" data-route="home">LumaCart</div>
+      <div class="search-wrap">
+        <input id="searchInput" type="text" placeholder="Search premium products..." />
+      </div>
+      <div class="nav-actions">
+        <button class="btn ghost" data-route="cart">Cart <span id="cartBadge" class="badge">0</span></button>
+        <button id="authButton" class="btn primary" data-route="auth">Login</button>
+      </div>
+    </nav>
+
+    <main>
+      <section id="homeSection" class="route-section">
+        <header class="hero glass">
+          <h1>Elevate your everyday setup.</h1>
+          <p>Discover premium tech and lifestyle picks curated for modern living.</p>
+          <button class="btn primary" data-scroll="productsArea">Shop Now</button>
+        </header>
+
+        <section class="categories">
+          <h2>Shop by Category</h2>
+          <div id="categoryGrid" class="category-grid"></div>
+        </section>
+
+        <section id="productsArea" class="products-layout">
+          <aside class="sidebar glass">
+            <h3>Filter Products</h3>
+            <label>Category</label>
+            <select id="categoryFilter">
+              <option value="">All</option>
+            </select>
+
+            <label>Max Price ($)</label>
+            <input id="priceFilter" type="number" min="0" placeholder="No limit" />
+
+            <label>Sort</label>
+            <select id="sortFilter">
+              <option value="">Default</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+              <option value="newest">Newest</option>
+            </select>
+
+            <button id="clearFilters" class="btn ghost">Clear Filters</button>
+          </aside>
+
+          <div>
+            <h2>Featured Products</h2>
+            <div id="productGrid" class="product-grid"></div>
+          </div>
+        </section>
+      </section>
+
+      <section id="cartSection" class="route-section hidden">
+        <h2>Your Cart</h2>
+        <div id="cartList" class="cart-list"></div>
+      </section>
+
+      <section id="checkoutSection" class="route-section hidden">
+        <h2>Checkout</h2>
+        <div class="checkout-grid">
+          <form id="checkoutForm" class="glass form-card">
+            <label>Full Name</label>
+            <input name="fullName" required />
+            <label>Address</label>
+            <input name="address" required />
+            <label>City</label>
+            <input name="city" required />
+            <label>Payment Method</label>
+            <select name="paymentMethod" required>
+              <option value="">Select</option>
+              <option value="card">Credit/Debit Card</option>
+              <option value="upi">UPI</option>
+              <option value="cod">Cash on Delivery</option>
+            </select>
+            <button class="btn primary" type="submit">Place Order</button>
+          </form>
+          <div id="orderSummary" class="glass form-card"></div>
+        </div>
+      </section>
+
+      <section id="authSection" class="route-section hidden">
+        <div class="auth-wrapper">
+          <form id="authForm" class="glass auth-card">
+            <h2 id="authTitle">Login</h2>
+            <input id="nameField" name="name" class="hidden" placeholder="Full name" />
+            <input name="email" type="email" placeholder="Email" required />
+            <input name="password" type="password" placeholder="Password" required />
+            <button class="btn primary" type="submit">Continue</button>
+            <p>
+              <span id="authPrompt">Don't have an account?</span>
+              <button id="toggleAuthMode" class="link-btn" type="button">Sign up</button>
+            </p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
