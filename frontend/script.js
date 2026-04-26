@@ -96,9 +96,13 @@ const applyFilters = () => {
   const maxPrice = Number(els.priceFilter.value || Infinity);
   const sort = els.sortFilter.value;
 
-  let data = [...state.products].filter(
-    (p) => p.title.toLowerCase().includes(search) && (!category || p.category === category) && p.price <= maxPrice
-  );
+  let data = [];
+  for (let i = 0; i < state.products.length; i++) {
+    const p = state.products[i];
+    if (p.title.toLowerCase().includes(search) && (!category || p.category === category) && p.price <= maxPrice) {
+      data.push(p);
+    }
+  }
 
   if (sort === 'price-asc') data.sort((a, b) => a.price - b.price);
   if (sort === 'price-desc') data.sort((a, b) => b.price - a.price);
